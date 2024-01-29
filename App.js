@@ -1,35 +1,53 @@
-class Message extends React.Component {
- constructor(props){
-    super(props)
-    this.state = {
-        messageIsActive:false
-    }
-    this.handleMessageButton = this.handleMessageButton.bind(this)
- }
+class Counter extends React.Component {
 
 
-    handleMessageButton(){
-        this.setState({
-            messageIsActive: !this.state.messageIsActive
-        })
+    state = {
+        count : 0,
+        result: 0
     }
+
+    handleMathClick(type, number){
+        //debugger
+        if(type === "substraction"){
+            this.setState(prevState => ({
+                count: prevState.count + 1,
+                result: prevState.result - number
+            }))
+        } else if(type === "reset"){
+            this.setState(prevState => ({
+                count: prevState.count + 1,
+                result: 0
+            }))
+        } else if(type === "addition"){
+            this.setState(prevState => ({
+                count: prevState.count + 1,
+                result: prevState.result + number
+            }))
+        } 
+    }
+
 
     render(){
-        const text = "Lorem ipsum dolor sit amet."
-        return (
-            <React.Fragment>
-                <button onClick={this.handleMessageButton}>{this.state.messageIsActive ? "Ukryj" : "Pokaz"}</button>
-                <p>{text}</p>
-                </React.Fragment>
-                
-        );
-        
-    }
+        return(
+            <>
+            <button onClick={this.handleMathClick.bind(this,"substraction", 10 )}>-10</button>
+            <button onClick={()=>this.handleMathClick("substraction",1)}>-1</button>
+            <button onClick={this.handleMathClick.bind(this, "reset")}>Reset</button>
+            <button onClick={this.handleMathClick.bind(this,"addition", 10 )}>+10</button>
+            <button onClick={this.handleMathClick.bind(this,"addition", 1 )}>+1</button>
 
+            <h1>Liczba klikniec: {this.state.count}</h1>
+            <h1>Wynik:{this.state.result}</h1>
+            </>
+        )
+    }
 
 
 }
 
 
 
-ReactDOM.render(<Message/> , document.getElementById('root'))
+
+
+ReactDOM.render(<Counter/> , document.getElementById('root'))
+
