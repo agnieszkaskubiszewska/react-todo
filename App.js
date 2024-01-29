@@ -71,7 +71,7 @@ const ResultPanel=(props)=> {
     return (
         <>
         <h1>Liczba klikniec: {props.count} {props.count > 10 ? 
-        <span>Przeciazenie procesora</span> : null }</h1>
+        <span>.Przeciazenie procesora</span> : null }</h1>
         <h1>Wynik:{props.result}</h1>
         </>
     )
