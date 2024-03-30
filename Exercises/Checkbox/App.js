@@ -1,39 +1,38 @@
-const PositiveMessage = () => <p> Mozesz obejrzeć film. Zapraszamy!</p>;
-const NegativeMessage = () => <p> Nie mozesz obejrzeć filmu.</p>;
+const ValidationMessage = (props) => <p>{props.txt}</p>;
 
 class TicketShop extends React.Component {
   state = {
     isConfirmed: false,
     isSubmitted: false,
   };
+
   handleCheckboxChange = () => {
     this.setState({
       isConfirmed: !this.state.isConfirmed,
-      isSubmitted: false
+      isSubmitted: false,
     });
   };
 
   handleFormSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     this.setState({
-        isSubmitted:true
-    })
+      isSubmitted: true,
+    });
   };
 
-  displayMessage = () => {
+  render() {
+    let message = null;
+
     if (this.state.isSubmitted) {
       if (this.state.isConfirmed) {
-        return <PositiveMessage />;
+        message = <ValidationMessage txt="Mozesz obejrzeć film. Zapraszamy!" />;
       } else {
-        return <NegativeMessage />;
+        message = <ValidationMessage txt="Nie mozesz obejrzeć filmu" />;
       }
-    } else {
-      return null;
     }
-  };
-  render() {
+
     return (
-     <>
+      <>
         <h1>Kup bilet na horror roku!</h1>
         <form onSubmit={this.handleFormSubmit}>
           <input
@@ -46,7 +45,7 @@ class TicketShop extends React.Component {
           <br />
           <button type="submit">Kup bilet</button>
         </form>
-        {this.displayMessage()}
+        {message}
       </>
     );
   }
