@@ -14,13 +14,20 @@ class App extends React.Component {
             shopingCart:this.state.shopingCart +1
         })
     }
-    
+    handleBuy =() =>{
+        this.setState({
+            availableProducts:this.state.availableProducts - this.state.shopingCart,
+            shopingCart:0
+        })
+    }
     render() {
+        const {shopingCart,availableProducts} = this.state
         return(
             <div>
-            <button onClick={this.handleRemoveFromCart} disabled={this.state.shopingCart ? false : true}>-</button>
-            <span> {this.state.shopingCart} </span>
-            <button disabled={this.state.shopingCart ===this.state.availableProducts? true : false }   onClick={this.handleAddToCard}>+</button>
+            <button onClick={this.handleRemoveFromCart} disabled={shopingCart ? false : true}>-</button>
+            <span style={shopingCart === 0 ? {opacity:0.3}: {}}> {shopingCart} </span>
+            <button disabled={shopingCart ===availableProducts? true : false }   onClick={this.handleAddToCard}>+</button>
+            {shopingCart > 0 && <button onClick={this.handleBuy}>KUP</button>}
             </div>
         )
     }
