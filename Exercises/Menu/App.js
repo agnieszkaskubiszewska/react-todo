@@ -8,9 +8,6 @@ class  App extends React.Component {
             {id:4, name:"kaszotto", active:true },
             {id:5, name:"brokuły", active:true },
             {id:6, name:"makaron", active:true },
-            {id:7, name:"pizza", active:true },
-            {id:8, name:"sery", active:true },
-            {id:9, name:"podroby", active:true },
         ]
     } 
     render() { 
