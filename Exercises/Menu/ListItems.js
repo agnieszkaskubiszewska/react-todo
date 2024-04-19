@@ -4,6 +4,8 @@ const ListItems = (props) => {
         key={item.id}
         name={item.name}
         active={item.active}
+        changeStatus={props.changeStatus}
+        id={item.id}
         />
     ))
     return (
