@@ -1,12 +1,32 @@
+
 class  Magic extends React.Component {
+
+    state = {
+        omens: [
+          { name: 'Będziesz bogaty' },
+          { name: 'Rozwiedziesz się' },
+          { name: 'Adoptujesz psa' },
+          { name: 'Przegrasz 5 złotych w zakładach' }
+        ],
+        selectedOmen: ''
+      };
+
+
+      handleOmenViewing = () => {
+        const randomIndex = Math.floor(Math.random() * this.state.omens.length);
+        const selectedOmen = this.state.omens[randomIndex].name;
+        this.setState({ selectedOmen });
+      };
+
+
     render(){
         return(
             <div>
-                    <button class="button-1" role="button">Zobacz wrózbe</button>
+                    <button className="button-1" role="button" onClick={this.handleOmenViewing}>Zobacz wrózbe</button>
                     <br />
                     <input type="text" /> <button class="button-1" role="button">Dodaj wrózbe</button>
                     <br />
-                    <h1></h1>
+                    {this.state.selectedOmen && <h1>Twoja wrózba to: {this.state.selectedOmen}</h1>}
 
             </div>
         )
