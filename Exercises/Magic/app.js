@@ -11,7 +11,6 @@ class  Magic extends React.Component {
         selectedOmen: ''
       };
 
-
       handleOmenViewing = () => {
         const randomIndex = Math.floor(Math.random() * this.state.omens.length);
         const selectedOmen = this.state.omens[randomIndex].name;
@@ -32,6 +31,5 @@ class  Magic extends React.Component {
         )
     }
 }
-
 
 ReactDOM.render(<Magic />, document.getElementById('root'));
