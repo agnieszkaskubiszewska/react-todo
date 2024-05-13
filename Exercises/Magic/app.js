@@ -33,5 +33,4 @@ class  Magic extends React.Component {
     }
 }
 
-
 ReactDOM.render(<Magic />, document.getElementById('root'));
