@@ -8,7 +8,8 @@ class  Magic extends React.Component {
           { name: 'Adoptujesz psa' },
           { name: 'Przegrasz 5 złotych w zakładach' }
         ],
-        selectedOmen: ''
+        selectedOmen: '',
+        addedOmen:""
       };
 
       handleOmenViewing = () => {
@@ -17,13 +18,26 @@ class  Magic extends React.Component {
         this.setState({ selectedOmen });
       };
 
+      handleNewOmen = (e) => {
+        this.setState({
+          addedOmen: e.target.value
+      })
+    }
+
+    pushOmen = () => {
+      const { addedOmen, omens } = this.state;
+      omens.push({ name: addedOmen });
+      this.setState({ omens, addedOmen: "" });
+    }
+
+
 
     render(){
         return(
             <div>
                     <button className="button-1" role="button" onClick={this.handleOmenViewing}>Zobacz wrózbe</button>
                     <br />
-                    <input type="text" /> <button class="button-1" role="button">Dodaj wrózbe</button>
+                    <input onChange={this.handleNewOmen}type="text" /> <button onClick={this.pushOmen} class="button-1" role="button">Dodaj wrózbe</button>
                     <br />
                     {this.state.selectedOmen && <h1>Twoja wrózba to: {this.state.selectedOmen}</h1>}
 
