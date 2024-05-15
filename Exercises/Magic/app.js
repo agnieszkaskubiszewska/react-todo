@@ -27,7 +27,7 @@ class  Magic extends React.Component {
     pushOmen = () => {
       const { addedOmen, omens } = this.state;
       omens.push({ name: addedOmen });
-      this.setState({ omens, addedOmen: "" });
+      this.setState({ omens, addedOmen: " " });
     }
 
 
