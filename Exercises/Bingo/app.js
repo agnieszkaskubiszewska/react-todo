@@ -20,7 +20,6 @@ class  Bingo extends React.Component {
         this.setState({selectedBingo, currentIndex: nextIndex});
       }
 
-
     render(){
         return(
             <div>
